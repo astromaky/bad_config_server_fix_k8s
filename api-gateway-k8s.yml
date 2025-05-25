@@ -1,5 +1,6 @@
 customers-service-id: http://customers-service.default.svc.cluster.local:8080
 vists-service-id: http://vists-service.default.svc.cluster.local:8080
+prescriptions-service-id: http://prescriptions-service.default.svc.cluster.local:8080
 
 spring:
   cloud:
@@ -18,6 +19,12 @@ spring:
         host-append: false	
         port-append: false	
         proto-append: false	      
+        - id: prescriptions-service
+          uri: http://prescriptions-service.default.svc.cluster.local:8080
+          predicates:
+            - Path=/api/prescriptions/**
+          filters:
+            - StripPrefix=2
         - id: vets-service
           uri: http://vets-service.default.svc.cluster.local:8080
           predicates:

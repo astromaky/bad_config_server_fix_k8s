@@ -70,3 +70,21 @@ spring:
     username: root
     password: petclinic
     initialization-mode: ALWAYS
+
+chaos:
+    monkey:
+        enabled: true
+        watcher:
+            service: true
+management:
+    endpoint:
+        chaosmonkey:
+            enabled: true
+        chaosmonkeyjmx:
+            enabled: true
+    endpoints:
+        web:
+            base-path: /actuator
+            exposure:
+                include: '*'
+
